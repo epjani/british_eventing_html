@@ -105,7 +105,7 @@ body{
 	padding: 12px 20px 8px 20px;	
 }
 .navigation .nav_btn.menu{
-	min-width: 165px;
+	height: 60px;
 }
 .navigation .nav_btn.shopping_cart{
 	min-width: 132px;
@@ -114,8 +114,6 @@ body{
 	text-decoration: none;
 }
 .navigation .nav_btn.menu img{
-	float: right;
-	margin-top: 10px;
 	margin-left: 10px;
 }
 .navigation .nav_btn.shopping_cart img{
@@ -378,12 +376,22 @@ ul.events_list li img{
 @media (max-width: 643px){
 	.single_event_wrapper .event_name{font-size: 30px;padding:10px 12px 0px 12px;}
 }
+@media (max-width: 615px){
+	.navigation .more, .navigation .home, .navigation .search{margin-right: 0px;}	
+}
 @media (max-width: 576px){
 	.single_event_wrapper .event_name{font-size: 28px;}
+}
+@media (max-width: 556px){
+	.navigation.row{padding-left: 0px;padding-right: 0px;}
 }
 @media (max-width: 540px){
 	.single_event_wrapper .event_name{font-size: 25px;padding:13px 12px 0px 12px;}
 }
 @media (max-width: 515px){
 	.single_event_wrapper .event_name{font-size: 19px;}
+}
+@media (max-width: 488px){
+	.hide_on_small{display: none;}
+	.single_event_wrapper .event_name{font-size: 17px;padding:18px 12px 0px 12px;}
 }
