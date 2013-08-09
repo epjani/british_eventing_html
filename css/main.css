@@ -376,9 +376,9 @@ ul.events_list li img{
 @media (max-width: 643px){
 	.single_event_wrapper .event_name{font-size: 30px;padding:10px 12px 0px 12px;}
 }
-@media (max-width: 615px){
+/*@media (max-width: 615px){
 	.navigation .more, .navigation .home, .navigation .search{margin-right: 0px;}	
-}
+}*/
 @media (max-width: 576px){
 	.single_event_wrapper .event_name{font-size: 28px;}
 }
@@ -392,6 +392,6 @@ ul.events_list li img{
 	.single_event_wrapper .event_name{font-size: 19px;}
 }
 @media (max-width: 488px){
-	.hide_on_small{display: none;}
+	/*.hide_on_small{display: none;}*/
 	.single_event_wrapper .event_name{font-size: 17px;padding:18px 12px 0px 12px;}
 }
