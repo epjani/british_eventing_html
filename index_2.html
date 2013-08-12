@@ -3,11 +3,58 @@
 	<head>
 		<meta id="Viewport" name="viewport" width="initial-scale=1.5, target-densitydpi=device-dpi, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">		
 		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/jquery.touchSwipe.min.js"></script>
+		
 		<!--<script src="js/bootstrap.js"></script>-->
 	</head>
+	<script>
+		var __slidable_images = []; //	Slike koje pripadaju slideru
+		var __active_index;			// 	Index (koja slika u nizu je aktivna)	
+		var sliders_count;			//	Koliko slika postoji koje pripadaju slider-u
 
+		$(document).ready(function(){					//	Ovo se izvrsava kada se ucita sav html/css
+			__slidable_images = $(".slideable");		//	Smjestimo u niz sve slike koje pripadaju slideru (tj koje imaju klasu .slideable)
+			__active_index = 0;							//	znamo da je prva slike aktivna, zato kazemo da je aktivni index 0
+			sliders_count = __slidable_images.length;	//	Sliders count-u kazemo koliko slika ima u nizu __slideable_images
+
+			$(".slideable").swipe({
+				swipeLeft:function(event, direction, distance, duration, fingerCount) {
+					slide_left();
+				},
+				swipeRight: function(event, direction, distance, duration, fingerCount){
+					slide_right();
+				}
+			});
+		});
+
+		function slide_left(){
+			$(__slidable_images[__active_index]).removeClass('active').addClass('hidden');		//	aktivnoj slici oduzni klasu active i dodaj joj klasu hidden
+
+			if (__active_index - 1 >= 0){		//	Ako e aktivni index kada se umanji manji veci ili jednak 0 prebaci na prethodnu sliku			
+				$(__slidable_images[__active_index - 1]).addClass('active').removeClass('hidden');  // 	slici sa manjim indexom (koja je sljedeca uljevo) dodaj klasu active a oduzmi klasu hidden
+				__active_index--;	//	Index koji oznacava aktivnu sliku umanji za jedan
+			}else{	// Ako je index 0, tj kada se umanji manji od 0
+				__active_index = sliders_count -1;
+				$(__slidable_images[__active_index ]).addClass('active').removeClass('hidden');  // 	slici sa manjim indexom (koja je sljedeca uljevo) dodaj klasu active a oduzmi klasu hidden
+			}
+			
+		}
+
+		function slide_right(){
+			$(__slidable_images[__active_index]).removeClass('active').addClass('hidden');
+
+			if (__active_index + 1 < sliders_count){				
+				$(__slidable_images[__active_index + 1]).addClass('active').removeClass('hidden');
+				__active_index = __active_index + 1;
+			}else{
+				__active_index = 0;
+				$(__slidable_images[__active_index]).addClass('active').removeClass('hidden');
+				
+			}
+		}
+	</script>
 	<body>
 		<div class="be_640"> <!-- temp width wrapper -->
 			<div class="british_eventing_wrapper">
@@ -31,7 +78,9 @@
 					<div class="slider row">
 						<a href="#" onclick="slide_left();" class="slide_l"></a>
 						<a href="#" onclick="slide_right();" class="slide_r"></a>
-						<img src="images/be_slide1.jpg" />
+						<img src="images/be_slide1.jpg" class="slideable active"/>
+						<img src="images/be_slide2.jpg" class="slideable hidden"/>
+						<img src="images/be_slide3.jpg" class="slideable hidden"/>
 					</div>
 					
 				</div><!-- header -->

@@ -31,6 +31,8 @@ body{
 .clear{
 	clear: both;
 }
+.active{display:block;}
+.hidden{display:none;}
 .padded32{padding:32px;}
 .font-bold{font-weight: bold;}
 .font-gotham{font-family: 'gothambookregular';}
